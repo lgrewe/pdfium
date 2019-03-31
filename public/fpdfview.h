@@ -190,7 +190,7 @@ typedef int FPDF_TEXT_RENDERMODE;
 #if defined(WIN32) && defined(FPDFSDK_EXPORTS)
 #define FPDF_CALLCONV __stdcall
 #else
-#define FPDF_CALLCONV
+#define FPDF_CALLCONV __stdcall
 #endif
 
 // Exported Functions

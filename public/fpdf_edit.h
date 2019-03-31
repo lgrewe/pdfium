@@ -95,7 +95,7 @@ extern "C" {
 // Create a new PDF document.
 //
 // Returns a handle to a new document, or NULL on failure.
-FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument();
+FPDF_EXPORT FPDF_DOCUMENT FPDF_CALLCONV FPDF_CreateNewDocument(void);
 
 // Create a new PDF page.
 //

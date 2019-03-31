@@ -1,0 +1,36 @@
+Win32:
+
+Launch in a VS2017 x64 x86 Cross Tools Command Prompt:
+
+
+Assuming you did already a git clone 'https://chromium.googlesource.com/chromium/tools/depot_tools.git':
+
+set PATH=C:\SpinetiX\sources\git\depot_tools;%PATH%
+set DEPOT_TOOLS_WIN_TOOLCHAIN=0
+gclient config --unmanaged https://pdfium.googlesource.com/pdfium/
+gclient sync
+cd pdfium
+
+For debug build: 
+
+buildtools\win\gn.exe gen out/Debug --args="is_official_build=false is_component_build=false clang_use_chrome_plugins=false use_goma=false is_debug=true pdf_is_standalone=true pdf_enable_v8=false pdf_enable_xfa=false pdf_use_skia=false pdf_use_skia_paths=false target_cpu=\"x86\""
+ninja -C out/Debug pdfium
+
+For release build:
+
+buildtools\win\gn.exe gen out/Debug --args="is_official_build=true is_component_build=false clang_use_chrome_plugins=false use_goma=false is_debug=false pdf_is_standalone=true pdf_enable_v8=false pdf_enable_xfa=false pdf_use_skia=false pdf_use_skia_paths=false target_cpu=\"x86\""
+ninja -C out/Release pdfium
+
+
+Linux-x64:
+
+git clone 'https://chromium.googlesource.com/chromium/tools/depot_tools.git'
+export PATH="${PWD}/depot_tools:${PATH}"
+git clone https://skia.googlesource.com/skia.git
+cd skia
+git checkout chrome/m71
+python tools/git-sync-deps
+bin/gn gen out/Debug --args='is_official_build=false is_component_build=true is_debug=true skia_enable_gpu=false skia_use_icu=false cc="/home/SPINETIX/jcm/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang" cxx="/home/SPINETIX/jcm/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang++"'
+ninja -C out/Debug
+bin/gn gen out/Release --args='is_official_build=false is_component_build=true is_debug=false skia_enable_gpu=false skia_use_icu=false cc="/home/SPINETIX/jcm/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang" cxx="/home/SPINETIX/jcm/clang+llvm-7.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang++"'
+ninja -C out/Release

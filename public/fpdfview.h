@@ -207,7 +207,7 @@ extern "C" {
 // Comments:
 //          Convenience function to call FPDF_InitLibraryWithConfig() for
 //          backwards comatibility purposes.
-FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary();
+FPDF_EXPORT void FPDF_CALLCONV FPDF_InitLibrary(void);
 
 // Process-wide options for initializing the library.
 typedef struct FPDF_LIBRARY_CONFIG_ {
@@ -255,7 +255,7 @@ FPDF_InitLibraryWithConfig(const FPDF_LIBRARY_CONFIG* config);
 //          the library.
 //          After this function is called, you should not call any PDF
 //          processing functions.
-FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary();
+FPDF_EXPORT void FPDF_CALLCONV FPDF_DestroyLibrary(void);
 
 // Policy for accessing the local machine time.
 #define FPDF_POLICY_MACHINETIME_ACCESS 0
@@ -533,7 +533,7 @@ FPDF_EXPORT FPDF_BOOL FPDF_CALLCONV FPDF_GetFileVersion(FPDF_DOCUMENT doc,
 // Comments:
 //          If the previous SDK call succeeded, the return value of this
 //          function is not defined.
-FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError();
+FPDF_EXPORT unsigned long FPDF_CALLCONV FPDF_GetLastError(void);
 
 // Function: FPDF_DocumentHasValidCrossReferenceTable
 //          Whether the document's cross reference table is valid or not.

@@ -241,7 +241,7 @@ typedef struct FPDF_CharsetFontMap_ {
  * Return Value:
  *     Pointer to the Charset Font Map.
  **/
-FPDF_EXPORT const FPDF_CharsetFontMap* FPDF_CALLCONV FPDF_GetDefaultTTFMap();
+FPDF_EXPORT const FPDF_CharsetFontMap* FPDF_CALLCONV FPDF_GetDefaultTTFMap(void);
 
 /**
  * Function: FPDF_AddInstalledFont
@@ -292,7 +292,7 @@ FPDF_SetSystemFontInfo(FPDF_SYSFONTINFO* pFontInfo);
  *          Application should call FPDF_FreeDefaultSystemFontInfo to free the
  *returned pointer.
  **/
-FPDF_EXPORT FPDF_SYSFONTINFO* FPDF_CALLCONV FPDF_GetDefaultSystemFontInfo();
+FPDF_EXPORT FPDF_SYSFONTINFO* FPDF_CALLCONV FPDF_GetDefaultSystemFontInfo(void);
 
 /**
  * Function: FPDF_FreeDefaultSystemFontInfo

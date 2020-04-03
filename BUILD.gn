@@ -141,7 +141,7 @@ group("pdfium_public_headers") {
   ]
 }
 
-component("pdfium") {
+shared_library("pdfium") {
   libs = []
   configs += [ ":pdfium_core_config" ]
   public_configs = [ ":pdfium_public_config" ]

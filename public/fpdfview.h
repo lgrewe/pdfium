@@ -167,7 +167,7 @@ typedef int FPDF_OBJECT_TYPE;
 // Text object enums.
 typedef int FPDF_TEXT_RENDERMODE;
 
-#if defined(COMPONENT_BUILD)
+#if 1
 // FPDF_EXPORT should be consistent with |export| in the pdfium_fuzzer
 // template in testing/fuzzers/BUILD.gn.
 #if defined(WIN32)

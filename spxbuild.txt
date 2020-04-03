@@ -1,7 +1,7 @@
 Win32:
 
-Launch in a VS2017 x64 x86 Cross Tools Command Prompt:
-
+Launch in a VS2019 x64 x86 Cross Tools Command Prompt:
+You may need a python -m pip install pywin32
 
 Assuming you did already a git clone 'https://chromium.googlesource.com/chromium/tools/depot_tools.git':
 
@@ -10,6 +10,9 @@ set DEPOT_TOOLS_WIN_TOOLCHAIN=0
 gclient config --unmanaged https://pdfium.googlesource.com/pdfium/
 gclient sync
 cd pdfium
+cd build
+git apply -3 C:\SpinetiX\sources\ext\build-scripts\pdfium\build.patch
+cd ..
 
 For debug build: 
 

@@ -10,6 +10,11 @@ set DEPOT_TOOLS_WIN_TOOLCHAIN=0
 gclient config --unmanaged https://pdfium.googlesource.com/pdfium/
 gclient sync
 cd pdfium
+Only once, switch the origin:
+	git remote rename origin upstream
+	git remote add origin https://github.com/spinetix/pdfium
+git fetch origin
+git checkout spx-3987
 cd build
 git apply -3 C:\SpinetiX\sources\ext\build-scripts\pdfium\build.patch
 cd ..
@@ -24,3 +29,26 @@ For release build:
 buildtools\win\gn.exe gen out/Release --args="is_official_build=true is_component_build=false clang_use_chrome_plugins=false use_goma=false is_debug=false pdf_is_standalone=true pdf_enable_v8=false pdf_enable_xfa=false pdf_use_skia=false pdf_use_skia_paths=false target_cpu=\"x86\""
 ninja -C out/Release pdfium
 
+Linux64:
+
+Assuming you did already a git clone 'https://chromium.googlesource.com/chromium/tools/depot_tools.git':
+- add your depot_tools to the path
+- create a new folder for the build an cd
+gclient config --unmanaged https://pdfium.googlesource.com/pdfium/
+gclient sync
+cd pdfium
+Only once, switch the origin:
+	git remote rename origin upstream
+	git remote add origin https://github.com/spinetix/pdfium
+git fetch origin
+git checkout spx-3987
+
+For debug build:
+
+gn gen out/Debug --args='is_official_build=false is_component_build=false is_desktop_linux=false clang_use_chrome_plugins=false use_goma=false is_debug=true pdf_is_standalone=true pdf_enable_v8=false pdf_enable_xfa=false pdf_use_skia=false pdf_use_skia_paths=false x64_arch="goldmont"'
+ninja -C out/Debug pdfium
+
+For release build:
+
+gn gen out/Release --args='is_official_build=true is_component_build=false is_desktop_linux=false clang_use_chrome_plugins=false use_goma=false is_debug=false pdf_is_standalone=true pdf_enable_v8=false pdf_enable_xfa=false pdf_use_skia=false pdf_use_skia_paths=false x64_arch="goldmont"'
+ninja -C out/Release pdfium
